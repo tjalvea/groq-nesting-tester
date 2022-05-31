@@ -1,7 +1,12 @@
+import {slugFromCategoryAndTitle} from "../customSlugGenerator";
+
 export default {
     name: "post",
     type: "document",
     title: "Post",
+    initialValue: () => ({
+        publishedAt: new Date().toISOString()
+    }),
     fields: [
         {
             name: 'title',
@@ -14,11 +19,7 @@ export default {
             type: 'reference',
             to: [{type: 'category'}],
         },
-        {
-            name: 'slug',
-            type: 'slug',
-            title: 'Slug',
-        },
+        slugFromCategoryAndTitle(doc => doc),
         {
             name: 'authors',
             title: 'Authors',

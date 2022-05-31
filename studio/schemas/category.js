@@ -8,5 +8,14 @@ export default {
             title: 'Title',
             type: 'string'
         },
+        {
+            name: 'parentPage',
+            title: 'Parent Page',
+            type: 'reference',
+            to: [{type: 'page'}],
+            options: {
+                disableNew: true,
+            }
+        }
     ]
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import {slugForPage} from "../customSlugGenerator";
 
 export default {
     type: 'document',
@@ -10,11 +11,7 @@ export default {
             type: 'string',
             title: 'Title',
         },
-        {
-            name: 'slug',
-            type: 'slug',
-            title: 'Slug',
-        },
+        slugForPage('title'),
         {
             name: 'pageSections',
             type: 'array',

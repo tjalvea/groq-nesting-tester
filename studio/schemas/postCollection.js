@@ -14,5 +14,11 @@ export default {
                 },
             ],
         },
+        {
+            name: 'categoryFilterOld',
+            title: 'Old filter',
+            type: 'reference',
+            to: [{type: 'category'}],
+        },
     ],
 };
