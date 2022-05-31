@@ -19,6 +19,7 @@ node_modules
 # misc
 .DS_Store
 *.pem
+/.idea/
 
 # debug
 npm-debug.log*
@@ -33,3 +34,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+studio/.env.development
+.env.local.test
+studio/config/.checksums
