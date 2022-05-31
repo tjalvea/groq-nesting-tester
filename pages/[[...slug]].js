@@ -34,8 +34,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, preview = false }) {
   const client = await getClient(preview);
 
-  // A helper function to work out what query we should run based on this slug
-  const { query, queryParams, docType } = getQueryFromSlug(params.slug);
+  const query = getPageQuery();
+  const queryParams = { slug: "homePage" };
+  const docType = "page"
 
   // Get the initial data for this page, using the correct query
   const pageData = await client.fetch(query, queryParams);
@@ -45,42 +46,6 @@ export async function getStaticProps({ params, preview = false }) {
       preview,
       data: { query, queryParams, docType, pageData },
     },
-  };
-}
-
-function getQueryFromSlug(slugArray = []) {
-  const docQuery = {
-    home: getPageQuery(),
-  };
-
-  let docType = "";
-
-  if (slugArray.length === 0) {
-    return {
-      docType: "home",
-      queryParams: { slug: "homePage" },
-      query: docQuery.home,
-    };
-  }
-
-  const [slugStart] = slugArray;
-
-  // We now have to re-combine the slug array to match our slug in Sanity.
-  let queryParams = { slug: `${slugArray.join("/")}` };
-
-  // Keep extending this section to match the slug against the docQuery object keys
-  if (docQuery.hasOwnProperty(slugStart)) {
-    docType = slugStart;
-  } else if (slugArray.length === 2) {
-    docType = "news";
-  } else {
-    docType = `page`;
-  }
-
-  return {
-    query: docQuery[docType],
-    queryParams,
-    docType,
   };
 }
 
@@ -96,10 +61,6 @@ export default function Page({ data, preview }) {
   });
 
   const page = filterDataToSingleItem(pageData, preview);
-
-  console.log(page);
-
-  const docType = page?._type;
 
   return (
       <div className="bg-white">

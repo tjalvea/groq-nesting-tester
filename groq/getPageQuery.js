@@ -16,7 +16,7 @@ export function getPageQuery() {
             ...,
             _type,
             categoryFilter,
-            'posts': *[_type == "article" && category._ref == ^.categoryFilterOld._ref]
+            'posts': *[_type == "post" && category._ref in ^.categoryFilter[]._ref]
             {
                 _id,
                 _type,
@@ -35,7 +35,6 @@ export function getPageQuery() {
                 "category": category->title,
                 image,
                 publishedAt,
-                tagline,
                 title,
                 "estimatedReadingTime": 5
             }
