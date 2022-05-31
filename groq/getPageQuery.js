@@ -17,7 +17,7 @@ export function getPageQuery() {
             _type,
             categoryFilter,
             categoryFilterOld,
-            'posts': *[_type == "post" && category._ref == ^.categoryFilter._ref]
+            'posts': *[_type == "post" && category._ref == ^.categoryFilterOld._ref]
             {
                 _id,
                 _type,
@@ -37,6 +37,7 @@ export function getPageQuery() {
                 image,
                 publishedAt,
                 title,
+                slug,
                 "estimatedReadingTime": 5
             }
         },

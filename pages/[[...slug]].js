@@ -79,6 +79,14 @@ import { usePreviewSubscription } from "../utils/sanity";
 import { filterDataToSingleItem } from "../utils/previewHelper";
 import React from "react";
 import {getPostQuery} from "../groq/getPostQuery";
+import dynamic from "next/dynamic";
+
+const PageSingle = dynamic(() =>
+    import("../components/page/PageContent").then((mod) => mod.default)
+);
+const NewsSingle = dynamic(() =>
+    import("../components/post/PostContent").then((mod) => mod.default)
+);
 
 export default function Page({ data, preview }) {
   const { data: pageData } = usePreviewSubscription(data?.query, {
@@ -91,12 +99,10 @@ export default function Page({ data, preview }) {
   const docType = page?._type;
 
   return (
-      <div className="bg-white">
-        <div className="relative overflow-hidden">
-            <div className="max-w-screen-xl mx-auto">
-              <h1>{page?.title}</h1>
-            </div>
-        </div>
-      </div>
+      <>
+        {docType === "home" && <PageSingle page={page} />}
+        {docType === "page" && <PageSingle page={page} />}
+        {docType === "post" && <NewsSingle post={page} />}
+      </>
   );
 }
