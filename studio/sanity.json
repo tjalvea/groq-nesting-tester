@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "Basic Next.js Site",
+    "name": "Groq Nesting Tester",
     "basePath": "/studio"
   },
   "api": {
@@ -13,7 +13,8 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "asset-source-unsplash"
   ],
   "env": {
     "development": {
@@ -22,8 +23,10 @@
       ]
     }
   },
-  "parts": [{
-    "name": "part:@sanity/base/schema",
-    "path": "./schemas/schema"
-  }]
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
 }
