@@ -17,7 +17,7 @@ export function getPageQuery() {
             _type,
             categoryFilter,
             categoryFilterOld,
-            'posts': *[_type == "post" && category._ref in ^.categoryFilter[]._ref]
+            'posts': *[_type == "post" && category._ref == ^.categoryFilter._ref]
             {
                 _id,
                 _type,
