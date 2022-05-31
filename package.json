@@ -3,20 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "cp .env.local.test .env.local && next",
     "build": "npm run build:sanity && npm run build:web",
     "build:web": "next build",
     "start:web": "next start",
     "build:sanity": "cd studio && npx sanity build ../public/studio -y && cd ..",
-    "start:sanity": "cp .env.local ./studio/.env.development && cd studio && sanity start",
+    "start:sanity": "cp .env.local.test ./studio/.env.development && cd studio && sanity start",
     "postinstall": "lerna bootstrap"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.4",
+    "@heroicons/react": "^1.0.6",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "lerna": "^3.22.1",
     "next": "10.0.0",
     "next-sanity": "^0.1.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-json-pretty": "^2.2.0",
-    "lerna": "^3.22.1"
+    "react-json-pretty": "^2.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24"
   }
 }
