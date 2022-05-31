@@ -37,3 +37,4 @@ yarn-error.log*
 studio/.env.development
 .env.local.test
 studio/config/.checksums
+studio/config/.checksums
